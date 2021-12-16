@@ -20,14 +20,14 @@ public class color : MonoBehaviour
             dict.Add(buttons[i], material[i]);
 
             int index = i;
-            buttons[i].onClick.AddListener(() => buttonCallBack(buttons[index], material[index], index));
+            buttons[i].onClick.AddListener(() => buttonCallBack(buttons[index], material[index] ));
 
         }
     }
 
-    private void buttonCallBack(Button buttonCliced, Material audioClipsPlaying, int index)
+    private void buttonCallBack(Button buttonCliced, Material currentMaterial)
     {
-
+        Paint.color = currentMaterial;
 
     }
 
