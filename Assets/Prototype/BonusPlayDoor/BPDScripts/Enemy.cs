@@ -5,7 +5,9 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private GameObject[] prefab;
-   
+
+    public GameObject[] Prefab => prefab;
+
     [SerializeField]
     private float minForce;
     [SerializeField]

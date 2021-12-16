@@ -6,6 +6,7 @@ public class Shoot : MonoBehaviour
 {
     private AudioSource audioSource;
     private Camera camera;
+    [SerializeField] Animator animator;
 
     private void Start()
     {
@@ -29,8 +30,8 @@ public class Shoot : MonoBehaviour
 
         audioSource.Play();
 
-        Ray ray = camera.ScreenPointToRay(Input.mousePosition);
-
+        Ray ray = new Ray(transform.position, Vector3.right);
+        Debug.DrawRay(transform.position, Vector3.right * 1000);
 
         RaycastHit raycastHit = new RaycastHit();
 
@@ -45,7 +46,7 @@ public class Shoot : MonoBehaviour
             }
 
 
-            Debug.DrawRay(transform.position, transform.forward, Color.green);
+            animator.SetBool("Shoot", true);
 
         }
     }
