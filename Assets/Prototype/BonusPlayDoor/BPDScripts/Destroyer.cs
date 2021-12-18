@@ -3,10 +3,16 @@ using UnityEngine;
 
 public class Destroyer : MonoBehaviour
 {
-    [SerializeField] private float timeForDestroy = 2;
-
-    private void Start()
+    private void OnTriggerEnter(Collider other)
     {
-        Destroy(gameObject, timeForDestroy);
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            Destroy(other.gameObject);
+          
+
+        }
+
+        
+
     }
 }

@@ -44,13 +44,13 @@ public class Enemy : MonoBehaviour
         {
             yield return new WaitForSeconds(Random.Range(minTime, maxTime * realTime));
 
-            ThrowFruit();
+            ThrowEnemy();
 
         }
 
 
     }
-    public void ThrowFruit()
+    public void ThrowEnemy()
     {
 
         transform.parent.localEulerAngles = new Vector3(0, 0, Random.Range(minAngel, maxAngel));
@@ -66,22 +66,10 @@ public class Enemy : MonoBehaviour
         {
             yield return new WaitForSeconds(5);
             realTime -= 0.2f;
-           
-           
 
+        
         }
     }
 
-    private void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.CompareTag("Bullet"))
-        {
-            //Lives -= 1;
-          
-           Debug.Log("Critical hit!");
-
-           //How to Create a collision with Particle System???
-          //After 20  collision close door
-        }
-    }
+   
 }
