@@ -14,6 +14,11 @@ public class ToolControler : MonoBehaviour
     [SerializeField]
     private ToolType toolType;
 
+    private void Start()
+    {
+        toolType = ToolType.brush;
+    }
+
     private void OnMouseDown()
     {
         if (toolType == ToolType.eraser )
