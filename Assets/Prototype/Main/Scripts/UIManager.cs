@@ -13,6 +13,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button menuButton;
     [SerializeField] private Button closemenuButton;
     [SerializeField] private GameObject popupMenu;
+    [SerializeField] private GameObject gameInstructions;
+    [SerializeField] private GameObject winLoseText;
+    [SerializeField] private GameObject gameInstructionsText;
 
     [SerializeField] private Slider slider;
 
@@ -42,15 +45,36 @@ public class UIManager : MonoBehaviour
 
     
 
+    public void OnClickRabbitButton()
+    {
+        gameInstructions.SetActive(true);
+    }
+
+    public void OnClickCloseRabbitButton()
+    {
+        gameInstructions.SetActive(false);
+    }
+
     public void OnClickMenuButton()
     {
         popupMenu.SetActive(true);
+       
     }
 
     public void OnClickClosemenuButton()
     {
         popupMenu.SetActive(false);
+       
     }
+
+    public void OnClickWinButton()
+    {
+        winLoseText.SetActive(true);
+        gameInstructionsText.SetActive(false);
+
+    }
+
+   
 
     public void SetVolume(float volume)
     {
