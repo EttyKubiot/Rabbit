@@ -9,19 +9,14 @@ public class ImgSucsess : MonoBehaviour
     
     public int[] letters;
     public int[] nikud;
-
+ 
     private int letterPress;
 
     [SerializeField] private TypeNikudButton typeNikudButton;
-
     [SerializeField] private NikudButtons nikudButtons;
-
     [SerializeField] private GameManager gameManager;
-
     [SerializeField] private Image picture;
-
     [SerializeField] private Sprite [] spriteToChangeItTo;
-
     [SerializeField] private int indexSprite = 0;
     //private ListsInList listsInList;
 
@@ -47,8 +42,7 @@ public class ImgSucsess : MonoBehaviour
       
     }
 
-   
-            public void AfterClick()
+    public void AfterClick()
     {
         if (letters[letterPress] == typeNikudButton.IndexButtonCliced && nikud[letterPress] == nikudButtons.IndexNikudCliced)
         {
@@ -100,8 +94,6 @@ public class ImgSucsess : MonoBehaviour
         //{
         //    Debug.Log("Error");
         //}
-
-
 
 
     }
