@@ -140,6 +140,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   emmiter: {fileID: 100000, guid: ad9b4e5dbffba41c5884955b6498d427, type: 3}
-  bubble: {fileID: 3934634452425399252, guid: 479a8a97aeb0eb344b580054074d5541, type: 3}
+  bubble: {fileID: 197726212905077495, guid: 7dcbdc82462da3b43829d0516b630315, type: 3}
   player: {fileID: 4180821279076699667, guid: 9c7f84357273c9b40a06c1e052ea831d, type: 3}
   pointValue: 0
+  doorAnimator: {fileID: 297702162701500347, guid: 4731401fc6f624b41a1f2cd91277c27f,
+    type: 3}
