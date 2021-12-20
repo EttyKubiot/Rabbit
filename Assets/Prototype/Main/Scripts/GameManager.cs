@@ -16,7 +16,14 @@ public class GameManager : MonoBehaviour
 
     //public UnityAction OnPlayerDeath;
 
+    public Texture2D cursorTexture;
+    public CursorMode cursorMode = CursorMode.Auto;
+    public Vector2 hotSpot = Vector2.zero;
 
+    private void Start()
+    {
+        Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
+    }
 
     public int Score
     {
@@ -44,7 +51,7 @@ public class GameManager : MonoBehaviour
         {
             health = value;
             OnWrongClick?.Invoke(health);
-            if (health >= 3)
+            if (health >= 5)
             {
                 OnHealseDone?.Invoke();
                 Debug.Log("game over");

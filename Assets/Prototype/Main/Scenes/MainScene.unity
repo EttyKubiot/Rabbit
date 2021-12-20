@@ -1805,7 +1805,6 @@ MonoBehaviour:
   buttons: []
   audioClips: []
   audioSource: {fileID: 0}
-  IsClicked: 0
 --- !u!1 &203601352
 GameObject:
   m_ObjectHideFlags: 0
@@ -9845,6 +9844,7 @@ MonoBehaviour:
   - {fileID: 1311251664}
   - {fileID: 1421869316}
   indexNikudCliced: 0
+  IsClicked: 0
 --- !u!4 &558210574
 Transform:
   m_ObjectHideFlags: 0
@@ -12294,7 +12294,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9b1bea4baaa4a24439fbad700a59f8ab, type: 3}
   - {fileID: 8300000, guid: 7ed21b27aedfb0344afe868cfb9475f2, type: 3}
   audioSource: {fileID: 0}
-  IsClicked: 0
 --- !u!82 &772197102
 AudioSource:
   m_ObjectHideFlags: 0
@@ -13151,7 +13150,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5e1f24c8e7d8ac648a05895ff6035ec7, type: 3}
   - {fileID: 8300000, guid: 8db48337e67d9ee49988e94441dfb08f, type: 3}
   audioSource: {fileID: 0}
-  IsClicked: 0
 --- !u!82 &867161642
 AudioSource:
   m_ObjectHideFlags: 0
@@ -16487,7 +16485,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e69060a2f96ceb741b8e3a49d60396e6, type: 3}
   - {fileID: 8300000, guid: 9ed1abbbe0b79aa4b9e9284da7cdcd47, type: 3}
   audioSource: {fileID: 1311251667}
-  IsClicked: 0
 --- !u!82 &1311251667
 AudioSource:
   m_ObjectHideFlags: 0
@@ -17849,7 +17846,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 733c8d2f809f6a6468fd1a59011eed69, type: 3}
   - {fileID: 8300000, guid: 75fcb1c4c07dace40832ab7a15c70741, type: 3}
   audioSource: {fileID: 0}
-  IsClicked: 0
 --- !u!82 &1421869319
 AudioSource:
   m_ObjectHideFlags: 0
@@ -18410,6 +18406,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5b230d98c351e0458a18dab580358ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cursorTexture: {fileID: 2800000, guid: 7659fbedbc4d9af46906f3d5eafaf9e3, type: 3}
+  cursorMode: 0
+  hotSpot: {x: 0, y: 0}
 --- !u!4 &1489521905
 Transform:
   m_ObjectHideFlags: 0
@@ -19652,7 +19651,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9354892574d5a0b4995ec503bbe09f4f, type: 3}
   - {fileID: 8300000, guid: f97348a5196c49d45ab05c8f0fc813a3, type: 3}
   audioSource: {fileID: 0}
-  IsClicked: 0
 --- !u!82 &1712664521
 AudioSource:
   m_ObjectHideFlags: 0
@@ -20143,7 +20141,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 3
+  m_MaxValue: 5
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -22323,7 +22321,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 24360b0ecf223ed40a52937b32e5192d, type: 3}
   - {fileID: 8300000, guid: c97806422b3bb9b438acd0b7f20e3e4a, type: 3}
   audioSource: {fileID: 0}
-  IsClicked: 0
 --- !u!82 &2039605908
 AudioSource:
   m_ObjectHideFlags: 0

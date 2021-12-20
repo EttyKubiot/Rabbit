@@ -18,7 +18,7 @@ public class ImgSucsess : MonoBehaviour
     [SerializeField] private Image picture;
     [SerializeField] private Sprite [] spriteToChangeItTo;
     [SerializeField] private int indexSprite = 0;
-    //private ListsInList listsInList;
+
 
     private void Start()
     {
@@ -32,10 +32,10 @@ public class ImgSucsess : MonoBehaviour
 
     private void Update()
     {
-       if (typeNikudButton.IsClicked == true)
+       if (nikudButtons.IsClicked == true)
        {
             AfterClick();
-            typeNikudButton.IsClicked = false;
+            nikudButtons.IsClicked = false;
             
        }
 
@@ -71,29 +71,6 @@ public class ImgSucsess : MonoBehaviour
             Debug.Log("Error");
             gameManager.Health++;
         }
-
-        //listsInList.dictWords.dictWord1.letters 
-        //if (letters[letterPress] == typeNikudButton.IndexButtonCliced && nikud[letterPress] == nikudButtons.IndexNikudCliced)
-        //{
-        //    Debug.Log("sucsess");
-
-        //    if (letterPress + 2 <= letters.Length)
-        //    {
-        //        letterPress++;
-
-        //    }
-
-        //    else
-        //    {
-        //        letterPress = 0;
-        //        Debug.Log("sucsess word");
-        //    }
-        //}
-
-        //else
-        //{
-        //    Debug.Log("Error");
-        //}
 
 
     }
