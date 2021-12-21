@@ -9,8 +9,6 @@ public class NikudButtons : MonoBehaviour
     public GameObject[] nikudArrays;
     public int indexNikudCliced;
 
-    public bool IsClicked;
-
 
     Dictionary<Button, GameObject> dict = new Dictionary<Button, GameObject>();
     void Start()
@@ -21,29 +19,32 @@ public class NikudButtons : MonoBehaviour
         {
             dict.Add(nikud[i], nikudArrays[i]);
 
+            nikudArrays[i].SetActive(false);
             int cacheIndex = i;
 
-            nikud[i].onClick.AddListener(() => buttonCallBack( nikudArrays[cacheIndex], cacheIndex));
+            nikud[i].onClick.AddListener(() => buttonCallBack(/*nikud[cacheIndex],*/ nikudArrays[cacheIndex], cacheIndex));
 
         }
     }
 
   
-    public void buttonCallBack( GameObject nikudArrayActiv, int index) 
+    public void buttonCallBack(/*Button nikudCliced,*/ GameObject nikudArrayActiv, int index) 
     {
 
-       
-        indexNikudCliced = index;
+        for (int i = 0; i < nikudArrays.Length; i++)
+        {
 
-        IsClicked = true;
+            nikudArrays[i].SetActive(false);
+
+        }
+
+        nikudArrayActiv.SetActive(true);
+        indexNikudCliced = index;
         
 
         Debug.Log("index nikud" + index);
         Debug.Log(nikudArrayActiv);
-
-        nikudArrayActiv.GetComponent<AudioSource>().clip = nikudArrayActiv.GetComponent<TypeNikudButton>().AudioClipsPlaying;
-        nikudArrayActiv.GetComponent<AudioSource>().Play();
-
+       
 
     }
 

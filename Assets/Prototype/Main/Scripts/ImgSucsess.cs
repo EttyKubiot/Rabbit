@@ -9,16 +9,21 @@ public class ImgSucsess : MonoBehaviour
     
     public int[] letters;
     public int[] nikud;
- 
+
     private int letterPress;
 
     [SerializeField] private TypeNikudButton typeNikudButton;
-    [SerializeField] private NikudButtons nikudButtons;
-    [SerializeField] private GameManager gameManager;
-    [SerializeField] private Image picture;
-    [SerializeField] private Sprite [] spriteToChangeItTo;
-    [SerializeField] private int indexSprite = 0;
 
+    [SerializeField] private NikudButtons nikudButtons;
+
+    [SerializeField] private GameManager gameManager;
+
+    [SerializeField] private Image picture;
+
+    [SerializeField] private Sprite [] spriteToChangeItTo;
+
+    [SerializeField] private int indexSprite = 0;
+    //private ListsInList listsInList;
 
     private void Start()
     {
@@ -32,17 +37,18 @@ public class ImgSucsess : MonoBehaviour
 
     private void Update()
     {
-       if (nikudButtons.IsClicked == true)
+       if (typeNikudButton.IsClicked == true)
        {
             AfterClick();
-            nikudButtons.IsClicked = false;
+            typeNikudButton.IsClicked = false;
             
        }
 
       
     }
 
-    public void AfterClick()
+   
+            public void AfterClick()
     {
         if (letters[letterPress] == typeNikudButton.IndexButtonCliced && nikud[letterPress] == nikudButtons.IndexNikudCliced)
         {
@@ -71,6 +77,31 @@ public class ImgSucsess : MonoBehaviour
             Debug.Log("Error");
             gameManager.Health++;
         }
+
+        //listsInList.dictWords.dictWord1.letters 
+        //if (letters[letterPress] == typeNikudButton.IndexButtonCliced && nikud[letterPress] == nikudButtons.IndexNikudCliced)
+        //{
+        //    Debug.Log("sucsess");
+
+        //    if (letterPress + 2 <= letters.Length)
+        //    {
+        //        letterPress++;
+
+        //    }
+
+        //    else
+        //    {
+        //        letterPress = 0;
+        //        Debug.Log("sucsess word");
+        //    }
+        //}
+
+        //else
+        //{
+        //    Debug.Log("Error");
+        //}
+
+
 
 
     }
