@@ -19,39 +19,31 @@ public class KeyUI : MonoBehaviour
         // for (int i = 0; i < keyText.Length; i++)
 
         index1 = keydData.Index;
-        if (string.IsNullOrEmpty(keyText[0].text))
+            if (string.IsNullOrEmpty(keyText[0].text))
             {
                 keyText[0].text = keydData.Key1;
-                listOfLetters.Add(keyText[0]);
-           
-
-
+                //listOfLetters.Add(keyText[0]);
             }
 
             else if (keyText[0] != null && string.IsNullOrEmpty(keyText[1].text))
             {
             keyText[1].text = keydData.Key1;
-            listOfLetters.Add(keyText[1]);
+            //listOfLetters.Add(keyText[1]);
             }
 
-            else if (keyText[0] != null && keyText[1] != null)
+            else if (keyText[1] != null && keyText[1] != null)
             {
             keyText[2].text = keydData.Key1;
-            listOfLetters.Add(keyText[2]);
+            //listOfLetters.Add(keyText[2]);
             }
 
-            else
-            {
-            Debug.Log("fkjhlkbh;n");
-            }
- 
-            //}
+            
 
 
 
 
 
-            audioSource.clip = keydData.AudioClips;
+        audioSource.clip = keydData.AudioClips;
         audioSource.Play();
 
        

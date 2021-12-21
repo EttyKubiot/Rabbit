@@ -18,26 +18,23 @@ public class NikudUI : MonoBehaviour
         if (nikudSprite[0].sprite == null)
         {
             nikudSprite[0].sprite = nikudData.Icon;
-            listOfLetters.Add(nikudSprite[0]);
+            //listOfLetters.Add(nikudSprite[0]);
 
         }
 
         else if (nikudSprite[0].sprite != null && nikudSprite[1].sprite == null)
         {
             nikudSprite[1].sprite = nikudData.Icon;
-            listOfLetters.Add(nikudSprite[1]);
+            //listOfLetters.Add(nikudSprite[1]);
         }
 
         else if (nikudSprite[0].sprite != null && nikudSprite[1].sprite != null)
         {
             nikudSprite[2].sprite = nikudData.Icon;
-            listOfLetters.Add(nikudSprite[2]);
+            //listOfLetters.Add(nikudSprite[2]);
         }
 
-        else
-        {
-            Debug.Log("fkjhlkbh;n");
-        }
+        
 
         //}
 
