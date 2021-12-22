@@ -40,3 +40,5 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 316209cca8ab893439bf91d4e7971909, type: 3}
   - {fileID: 8300000, guid: 733c8d2f809f6a6468fd1a59011eed69, type: 3}
   - {fileID: 8300000, guid: 75fcb1c4c07dace40832ab7a15c70741, type: 3}
+  icon: {fileID: 21300000, guid: 3c4c1679c3a5b2047bafeb28ae43f771, type: 3}
+  index: 5

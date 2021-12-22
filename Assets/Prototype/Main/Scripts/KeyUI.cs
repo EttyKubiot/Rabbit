@@ -7,45 +7,41 @@ using UnityEngine.UI;
 public class KeyUI : MonoBehaviour
 {
     [SerializeField] private Text[] keyText;
-    [SerializeField] private List<Text> listOfLetters = new List<Text>();
+    [SerializeField] private GameManager gameManager;
+    [SerializeField] private CurectClicks curectClicks;
+    [SerializeField] private int indexButtonClicked;
+    //[SerializeField] private List<Text> listOfLetters = new List<Text>();
 
-    [SerializeField] private int index1;
+    public int IndexButtonClicked => indexButtonClicked;
 
-    public int Index1 => index1;
     public AudioSource audioSource;
 
+    private void Start()
+    {
+        gameManager.OnSucsessWord += ClearText;
+    }
     public void UpdateDisplayUI(KeyData keydData)
     {
-        // for (int i = 0; i < keyText.Length; i++)
 
-        index1 = keydData.Index;
-            if (string.IsNullOrEmpty(keyText[0].text))
-            {
-                keyText[0].text = keydData.Key1;
-                //listOfLetters.Add(keyText[0]);
-            }
+        indexButtonClicked = keydData.Index;
 
-            else if (keyText[0] != null && string.IsNullOrEmpty(keyText[1].text))
-            {
-            keyText[1].text = keydData.Key1;
-            //listOfLetters.Add(keyText[1]);
-            }
-
-            else if (keyText[1] != null && keyText[1] != null)
-            {
-            keyText[2].text = keydData.Key1;
-            //listOfLetters.Add(keyText[2]);
-            }
-
-            
-
-
-
-
+        keyText[curectClicks.LetterPress].text = keydData.Key1;
 
         audioSource.clip = keydData.AudioClips;
         audioSource.Play();
-
        
+        gameManager.OnClickKey?.Invoke(indexButtonClicked);
+
     }
+
+    public void ClearText()
+    {
+        for (int i = 0; i < keyText.Length; i++)
+        {
+            keyText[i].text = string.Empty;
+
+        }
+    }
+
+    
 }

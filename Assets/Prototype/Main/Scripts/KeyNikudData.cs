@@ -8,8 +8,12 @@ public class KeyNikudData : ScriptableObject
 {
 
     [SerializeField] private AudioClip[] audioClips;
+    [SerializeField] private Sprite icon;
+    [SerializeField] private int index;
 
     public AudioClip[] AudioClips => audioClips;
+    public Sprite Icon => icon;
+    public int Index => index;
 
-   
+
 }

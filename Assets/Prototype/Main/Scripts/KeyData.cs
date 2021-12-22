@@ -12,7 +12,6 @@ public class KeyData : ScriptableObject
 
     public string Key1 => key1;
     public int Index => index;
-
     public AudioClip AudioClips => audioClips;
 
     

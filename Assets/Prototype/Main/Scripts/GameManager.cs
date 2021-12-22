@@ -14,8 +14,9 @@ public class GameManager : MonoBehaviour
     public UnityAction<int> OnWrongClick;
     public UnityAction OnHealseDone;
 
-    //public UnityAction OnPlayerDeath;
-
+    public UnityAction<int> OnClickKey;
+    public UnityAction<int> OnClickNikudKey;
+    public UnityAction OnSucsessWord;
 
 
     public int Score
@@ -44,7 +45,7 @@ public class GameManager : MonoBehaviour
         {
             health = value;
             OnWrongClick?.Invoke(health);
-            if (health >= 3)
+            if (health >= 5)
             {
                 OnHealseDone?.Invoke();
                 Debug.Log("game over");

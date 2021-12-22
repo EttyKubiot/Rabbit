@@ -56,7 +56,9 @@ public class ImgSucsess : MonoBehaviour
 
             if (letterPress + 2 <= letters.Length)
             {
-                letterPress++;
+                //letterPress++;
+                letterPress = (letterPress + 1) % letters.Length;
+                //locationIndex = (locationIndex + 1) % locations.Count;
 
             }
 

@@ -8,21 +8,13 @@ using UnityEngine.EventSystems;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private Text ScoreText;
-    [SerializeField] private Text HealthText;
-
-    [SerializeField] private Button menuButton;
-    [SerializeField] private Button closemenuButton;
     [SerializeField] private GameObject popupMenu;
     [SerializeField] private GameObject gameInstructions;
     [SerializeField] private GameObject winLoseText;
     [SerializeField] private GameObject gameInstructionsText;
-
     [SerializeField] private Slider slider;
-
     [SerializeField] private AudioMixer audioMixer;
-
     [SerializeField] private GameManager gameManager;
-
     [SerializeField] private Image picture;
 
     private void Start()
@@ -43,7 +35,6 @@ public class UIManager : MonoBehaviour
  
     }
 
-    
 
     public void OnClickRabbitButton()
     {
