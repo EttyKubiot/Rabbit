@@ -18,7 +18,6 @@ public class GameManager : MonoBehaviour
     public UnityAction<int> OnClickNikudKey;
     public UnityAction OnSucsessWord;
 
-
     public int Score
     {
         get { return score; }

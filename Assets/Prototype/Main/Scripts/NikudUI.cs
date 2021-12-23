@@ -6,50 +6,40 @@ using UnityEngine.UI;
 public class NikudUI : MonoBehaviour
 {
     [SerializeField] private Image[] nikudSprite;
-    //[SerializeField] private List<Image> listOfLetters = new List<Image>();
-
-
     [SerializeField] private GameManager gameManager;
     [SerializeField] private KeyUI keyUI;
-    [SerializeField] private CurectClicks curectClicks;
-    [SerializeField] private int indexNikudClicked;
+    [SerializeField] private CorrectClicks correctClicks;
+    [SerializeField] private AudioSource audioSource;
+
+    private int indexNikudClicked;
+    private AudioClip[] audioNikudClicked;
+    private List<AudioClip> listToRead = new List<AudioClip>();
 
     public int IndexNikudClicked => indexNikudClicked;
+    public AudioClip[] AudioNikudClicked => audioNikudClicked;
+    public List<AudioClip> ListToRead => listToRead;
 
-    public AudioSource audioSource;
 
     private void Start()
     {
         gameManager.OnSucsessWord += ClaerImg;
+        gameManager.OnSucsessWord += ClaerListToRead;
     }
-
 
     public void UpdateDisplayUI(KeyNikudData keyNikudData)
     {
 
         indexNikudClicked = keyNikudData.Index;
 
-        nikudSprite[curectClicks.LetterPress].sprite = keyNikudData.Icon;
+        audioNikudClicked = keyNikudData.AudioClips;
+
+        nikudSprite[correctClicks.RightClicks].sprite = keyNikudData.Icon;
 
         audioSource.clip = keyNikudData.AudioClips[keyUI.IndexButtonClicked];
         audioSource.Play();
 
         gameManager.OnClickNikudKey?.Invoke(indexNikudClicked);
 
-
-
-        //audioSource.clip = nikudData.AudioClips;
-        //audioSource.Play();
-        //סטארט קורואטין ותקרא לפונקציה של רידקיניקוד
-        //StartCoroutine(ReadALL());
-
-        //}
-
-        //    private IEnumerator ReadALL()
-        //{
-
-        //    yield return new WaitForSeconds(0.05f);
-        //    //readKeyNikud.ReadKeyAndNikud(ScriptableObject);
     }
 
     private void ClaerImg()
@@ -61,5 +51,9 @@ public class NikudUI : MonoBehaviour
         }
     }
 
-    
+    private void ClaerListToRead()
+    {
+            listToRead.Clear();
+    }
+
 }

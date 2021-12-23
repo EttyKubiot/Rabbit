@@ -5457,7 +5457,7 @@ GameObject:
   - component: {fileID: 571670542}
   - component: {fileID: 571670543}
   m_Layer: 0
-  m_Name: Curect Clicks
+  m_Name: Correct Clicks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5492,6 +5492,8 @@ MonoBehaviour:
   letters: 000000000100000002000000
   nikud: 000000000100000002000000
   gameManager: {fileID: 285042772}
+  nikudUI: {fileID: 1132250165}
+  audioSource: {fileID: 1471195196}
 --- !u!1 &576113256
 GameObject:
   m_ObjectHideFlags: 0
@@ -10479,8 +10481,7 @@ MonoBehaviour:
   - {fileID: 311091488}
   gameManager: {fileID: 285042772}
   keyUI: {fileID: 1313311348}
-  curectClicks: {fileID: 571670543}
-  indexNikudClicked: 0
+  correctClicks: {fileID: 571670543}
   audioSource: {fileID: 1471195196}
 --- !u!4 &1132250166
 Transform:
@@ -12001,8 +12002,7 @@ MonoBehaviour:
   - {fileID: 1459455239}
   - {fileID: 1250801729}
   gameManager: {fileID: 285042772}
-  curectClicks: {fileID: 571670543}
-  indexButtonClicked: 0
+  correctClicks: {fileID: 571670543}
   audioSource: {fileID: 1471195196}
 --- !u!4 &1313311349
 Transform:

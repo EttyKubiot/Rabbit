@@ -8,13 +8,11 @@ public class KeyUI : MonoBehaviour
 {
     [SerializeField] private Text[] keyText;
     [SerializeField] private GameManager gameManager;
-    [SerializeField] private CurectClicks curectClicks;
-    [SerializeField] private int indexButtonClicked;
-    //[SerializeField] private List<Text> listOfLetters = new List<Text>();
+    [SerializeField] private CorrectClicks correctClicks;
+    [SerializeField] private AudioSource audioSource;
+    private int indexButtonClicked;
 
     public int IndexButtonClicked => indexButtonClicked;
-
-    public AudioSource audioSource;
 
     private void Start()
     {
@@ -25,7 +23,7 @@ public class KeyUI : MonoBehaviour
 
         indexButtonClicked = keydData.Index;
 
-        keyText[curectClicks.LetterPress].text = keydData.Key1;
+        keyText[correctClicks.RightClicks].text = keydData.Key1;
 
         audioSource.clip = keydData.AudioClips;
         audioSource.Play();
