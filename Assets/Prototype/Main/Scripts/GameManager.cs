@@ -18,6 +18,21 @@ public class GameManager : MonoBehaviour
     public UnityAction<int> OnClickNikudKey;
     public UnityAction OnSucsessWord;
 
+    public Texture2D cursorTexture;
+    public CursorMode cursorMode = CursorMode.Auto;
+    public Vector2 hotSpot = Vector2.zero;
+
+
+    private void Start()
+    {
+        Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
+    }
+
+    //void OnMouseEnter()
+    //{
+    //    Cursor.SetCursor(null, hotSpot, cursorMode);
+    //}
+
     public int Score
     {
         get { return score; }
