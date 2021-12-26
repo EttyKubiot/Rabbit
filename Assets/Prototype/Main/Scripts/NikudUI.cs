@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class NikudUI : MonoBehaviour
 {
     [SerializeField] private Image[] nikudSprite;
+    [SerializeField] private Image[] transparencySprite;
     [SerializeField] private GameManager gameManager;
     [SerializeField] private KeyUI keyUI;
     [SerializeField] private CorrectClicks correctClicks;
@@ -44,9 +45,10 @@ public class NikudUI : MonoBehaviour
 
     private void ClaerImg()
     {
+       
         for (int i = 0; i < nikudSprite.Length; i++)
         {
-            nikudSprite[i].sprite = default;
+            nikudSprite[i].sprite = transparencySprite[i].sprite;
 
         }
     }
