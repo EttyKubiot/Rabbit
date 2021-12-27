@@ -10803,6 +10803,7 @@ MonoBehaviour:
   keyUI: {fileID: 1313311348}
   correctClicks: {fileID: 571670543}
   audioSource: {fileID: 1471195196}
+  keyNikudData1: {fileID: 11400000, guid: 465258ebf4815ce44a6e0c9042a23152, type: 2}
 --- !u!4 &1132250166
 Transform:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ public class CorrectClicks : MonoBehaviour
     private bool corectNickudClick;
     private bool corectLetterClick;
     private int indexCorectLetterClick;
+    private bool nikudPrinted;
 
     [SerializeField] private Image picture;
 
@@ -34,23 +35,42 @@ public class CorrectClicks : MonoBehaviour
 
     public void CheckIfClickLetterCorrect(int indexButton)
     {
+        if(nikudPrinted == true)
+        {
+            audioSource.clip = nikudUI.AudioNikudClicked[indexButton];
+            audioSource.Play();
+        }
+
+
+        if (words[wordsIndex].nikud[words[wordsIndex].nikud.Length - 1] == 1 && rightClicks == words[wordsIndex].letters.Length - 1)
+        {
+            Debug.Log("lasst nikud shva");
+            corectNickudClick = true;
+            nikudUI.IndexNikudClicked = 1;
+        }
+
         if (words[wordsIndex].letters[rightClicks] == indexButton)
         {
             Debug.Log("sucsess");
             corectLetterClick = true;
             indexCorectLetterClick = indexButton;
             Currect();
+            
         }
+
         else
         {
             Debug.Log("Error");
             corectLetterClick = false;
             gameManager.Health++;
         }
+
     }
 
     public void CheckIfClickNikudCorrect(int indexNikudButton)
     {
+        nikudPrinted = true;
+
         if (words[wordsIndex].nikud[rightClicks] == indexNikudButton)
         {
             Debug.Log("sucsessNikud");
@@ -73,6 +93,7 @@ public class CorrectClicks : MonoBehaviour
         {
             corectLetterClick = false;
             corectNickudClick = false;
+            nikudPrinted = false;
 
             nikudUI.ListToRead.Add(nikudUI.AudioNikudClicked[indexCorectLetterClick]);
 
@@ -82,10 +103,7 @@ public class CorrectClicks : MonoBehaviour
                 gameManager.Score += 10;
                 gameManager.Health = 0;
                 rightClicks = 0;
-                wordsIndex = (wordsIndex + 1) % words.Length;
-                picture.gameObject.GetComponent<Image>().sprite = words[wordsIndex].wordSprite;
-
-
+                
                 StartCoroutine(RaedWord());
                 StartCoroutine(SucsessWord());
             }
@@ -106,6 +124,9 @@ public class CorrectClicks : MonoBehaviour
     {
         yield return new WaitForSeconds(4f);
         gameManager.OnSucsessWord?.Invoke();
+        wordsIndex = (wordsIndex + 1) % words.Length;
+        picture.gameObject.GetComponent<Image>().sprite = words[wordsIndex].wordSprite;
+
     }
 
 

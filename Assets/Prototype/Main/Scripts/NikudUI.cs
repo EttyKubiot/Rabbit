@@ -12,11 +12,23 @@ public class NikudUI : MonoBehaviour
     [SerializeField] private CorrectClicks correctClicks;
     [SerializeField] private AudioSource audioSource;
 
+    [SerializeField] private KeyNikudData keyNikudData1;
+
     private int indexNikudClicked;
     private AudioClip[] audioNikudClicked;
     private List<AudioClip> listToRead = new List<AudioClip>();
 
-    public int IndexNikudClicked => indexNikudClicked;
+
+    public int IndexNikudClicked
+    {
+        get { return indexNikudClicked; }
+        set
+        {
+            indexNikudClicked = value;
+            audioNikudClicked = keyNikudData1.AudioClips;
+        }
+    }
+
     public AudioClip[] AudioNikudClicked => audioNikudClicked;
     public List<AudioClip> ListToRead => listToRead;
 
