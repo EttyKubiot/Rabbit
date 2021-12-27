@@ -5704,13 +5704,13 @@ MonoBehaviour:
   words:
   - letters: 0400000003000000
     nikud: 0000000001000000
-    wordSprite: {fileID: 0}
+    wordSprite: {fileID: 21300000, guid: 9ad7ef3f3ace3cf49b76b22bb8d19c12, type: 3}
   - letters: 010000000a00000019000000
     nikud: 000000000200000001000000
-    wordSprite: {fileID: 0}
+    wordSprite: {fileID: 21300000, guid: b71572a71dbd74447899340da1a13512, type: 3}
   - letters: 100000001300000016000000
     nikud: 040000000400000001000000
-    wordSprite: {fileID: 0}
+    wordSprite: {fileID: 21300000, guid: 79a03f4384167524fb6ab18c94e25062, type: 3}
 --- !u!1 &576113256
 GameObject:
   m_ObjectHideFlags: 0
