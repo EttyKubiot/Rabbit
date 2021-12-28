@@ -14,6 +14,7 @@ public class CorrectClicks : MonoBehaviour
 
     [SerializeField] private Image picture;
     [SerializeField] private AudioClip[] sounds;
+    [SerializeField] private ParticleSystem particles;
 
     [SerializeField] private GameManager gameManager;
     [SerializeField] private NikudUI nikudUI;
@@ -22,7 +23,8 @@ public class CorrectClicks : MonoBehaviour
     [SerializeField] private WordData[] words;
 
     [SerializeField] private bool readWord;
-    public int RightClicks => rightClicks;
+    [SerializeField] private Animator animator;
+   public int RightClicks => rightClicks;
     public bool ReadWord => readWord;
     private void Start()
     {
@@ -99,10 +101,11 @@ public class CorrectClicks : MonoBehaviour
             if (rightClicks + 1 >= words[wordsIndex].letters.Length)
             {
                 Debug.Log("sucsess word");
+               
                 gameManager.Score += 10;
+                animator.SetBool("Scale", true);
                 gameManager.Health = 0;
                 rightClicks = 0;
-
                 StartCoroutine(PlaySound(1));
                 StartCoroutine(SucsessWord());
             }
@@ -122,6 +125,7 @@ public class CorrectClicks : MonoBehaviour
 
     private IEnumerator SucsessWord()
     {
+        particles.Play();
         readWord = true;
         yield return new WaitForSeconds(2.5f);
 
@@ -129,6 +133,7 @@ public class CorrectClicks : MonoBehaviour
         {
             audioSource.clip = nikudUI.ListToRead[i];
             audioSource.Play();
+           
             yield return new WaitForSeconds(audioSource.clip.length);
 
         }
@@ -146,6 +151,7 @@ public class CorrectClicks : MonoBehaviour
         yield return new WaitForSeconds(nikudUI.AudioNikudClicked[indexCorectLetterClick].length + 0.1f);
         audioSource.clip = sounds[intSound];
         audioSource.Play();
+        animator.SetBool("Scale", false);
 
     }
 

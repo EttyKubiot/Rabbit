@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: KeyData10
   m_EditorClassIdentifier: 
   audioClips: {fileID: 8300000, guid: 831a8797cbb352749a4f2abfd34783d9, type: 3}
-  key1: "\u05D9"
+  key1: " \u05D9"
   index: 10
