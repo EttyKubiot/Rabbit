@@ -11,23 +11,11 @@ public class NikudUI : MonoBehaviour
     [SerializeField] private KeyUI keyUI;
     [SerializeField] private CorrectClicks correctClicks;
     [SerializeField] private AudioSource audioSource;
-
     [SerializeField] private KeyNikudData keyNikudData1;
 
     private int indexNikudClicked;
     private AudioClip[] audioNikudClicked;
     private List<AudioClip> listToRead = new List<AudioClip>();
-
-
-    public int IndexNikudClicked
-    {
-        get { return indexNikudClicked; }
-        set
-        {
-            indexNikudClicked = value;
-            audioNikudClicked = keyNikudData1.AudioClips;
-        }
-    }
 
     public AudioClip[] AudioNikudClicked => audioNikudClicked;
     public List<AudioClip> ListToRead => listToRead;
@@ -37,6 +25,7 @@ public class NikudUI : MonoBehaviour
     {
         gameManager.OnSucsessWord += ClaerImg;
         gameManager.OnSucsessWord += ClaerListToRead;
+        gameManager.lasstNikudShva += NikudShva;
     }
 
     public void UpdateDisplayUI(KeyNikudData keyNikudData)
@@ -68,6 +57,11 @@ public class NikudUI : MonoBehaviour
     private void ClaerListToRead()
     {
             listToRead.Clear();
+    }
+
+    private void NikudShva()
+    {
+        audioNikudClicked = keyNikudData1.AudioClips;
     }
 
 }

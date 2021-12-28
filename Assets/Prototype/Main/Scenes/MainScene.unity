@@ -5698,6 +5698,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   picture: {fileID: 154003610}
+  sounds:
+  - {fileID: 8300000, guid: d3f93af676263eb4d8c89c22609cbd1c, type: 3}
+  - {fileID: 8300000, guid: ef7c16e5c9a928f468430a21cb16ec51, type: 3}
   gameManager: {fileID: 285042772}
   nikudUI: {fileID: 1132250165}
   audioSource: {fileID: 1471195196}

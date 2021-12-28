@@ -6,10 +6,8 @@ using UnityEngine.Events;
 public class GameManager : MonoBehaviour
 {
     private int score;
-
     private int health = 0;
 
-    //public UnityAction OnAllItemCollected;
     public UnityAction<int> OnScoreChanged;
     public UnityAction<int> OnWrongClick;
     public UnityAction OnHealseDone;
@@ -17,6 +15,7 @@ public class GameManager : MonoBehaviour
     public UnityAction<int> OnClickKey;
     public UnityAction<int> OnClickNikudKey;
     public UnityAction OnSucsessWord;
+    public UnityAction lasstNikudShva;
 
     public Texture2D cursorTexture;
     public CursorMode cursorMode = CursorMode.Auto;
@@ -40,15 +39,6 @@ public class GameManager : MonoBehaviour
         {
             score = value;
             OnScoreChanged?.Invoke(score);
-
-            //if (itemsCollected >= maxItems)
-            //{
-            //    OnAllItemCollected?.Invoke();
-            //}
-            //else
-            //{
-            //    OnItemCollected?.Invoke(itemsCollected);
-            //}
         }
     }
 

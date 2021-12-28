@@ -7,13 +7,13 @@ public class CorrectClicks : MonoBehaviour
 {
     private int rightClicks;
     private int wordsIndex;
-
     private bool corectNickudClick;
     private bool corectLetterClick;
-    private int indexCorectLetterClick;
     private bool nikudPrinted;
+    private int indexCorectLetterClick;
 
     [SerializeField] private Image picture;
+    [SerializeField] private AudioClip[] sounds;
 
     [SerializeField] private GameManager gameManager;
     [SerializeField] private NikudUI nikudUI;
@@ -33,7 +33,7 @@ public class CorrectClicks : MonoBehaviour
     }
 
 
-    public void CheckIfClickLetterCorrect(int indexButton)
+    private void CheckIfClickLetterCorrect(int indexButton)
     {
         if(nikudPrinted == true)
         {
@@ -41,12 +41,11 @@ public class CorrectClicks : MonoBehaviour
             audioSource.Play();
         }
 
-
-        if (words[wordsIndex].nikud[words[wordsIndex].nikud.Length - 1] == 1 && rightClicks == words[wordsIndex].letters.Length - 1)
+        if (words[wordsIndex].nikud[words[wordsIndex].nikud.Length - 1] == 1 && rightClicks == words[wordsIndex].letters.Length - 1 && nikudPrinted == false)
         {
             Debug.Log("lasst nikud shva");
             corectNickudClick = true;
-            nikudUI.IndexNikudClicked = 1;
+            gameManager.lasstNikudShva?.Invoke();
         }
 
         if (words[wordsIndex].letters[rightClicks] == indexButton)
@@ -55,7 +54,6 @@ public class CorrectClicks : MonoBehaviour
             corectLetterClick = true;
             indexCorectLetterClick = indexButton;
             Currect();
-            
         }
 
         else
@@ -67,7 +65,7 @@ public class CorrectClicks : MonoBehaviour
 
     }
 
-    public void CheckIfClickNikudCorrect(int indexNikudButton)
+    private void CheckIfClickNikudCorrect(int indexNikudButton)
     {
         nikudPrinted = true;
 
@@ -75,7 +73,6 @@ public class CorrectClicks : MonoBehaviour
         {
             Debug.Log("sucsessNikud");
             corectNickudClick = true;
-           
             Currect();
         }
         else
@@ -86,7 +83,7 @@ public class CorrectClicks : MonoBehaviour
         }
     }
 
-    public void Currect()
+    private void Currect()
     {
 
         if (corectLetterClick == true && corectNickudClick == true) 
@@ -103,13 +100,14 @@ public class CorrectClicks : MonoBehaviour
                 gameManager.Score += 10;
                 gameManager.Health = 0;
                 rightClicks = 0;
-                
-                StartCoroutine(RaedWord());
+
+                StartCoroutine(PlaySound(1));
                 StartCoroutine(SucsessWord());
             }
             else
             {
                 rightClicks = (rightClicks + 1) % words[wordsIndex].letters.Length;
+                StartCoroutine(PlaySound(0));
 
             }
         }
@@ -122,17 +120,8 @@ public class CorrectClicks : MonoBehaviour
 
     private IEnumerator SucsessWord()
     {
-        yield return new WaitForSeconds(4f);
-        gameManager.OnSucsessWord?.Invoke();
-        wordsIndex = (wordsIndex + 1) % words.Length;
-        picture.gameObject.GetComponent<Image>().sprite = words[wordsIndex].wordSprite;
-
-    }
-
-
-    private IEnumerator RaedWord()
-    {
-        yield return new WaitForSeconds(1f);
+        //RaedWord
+        yield return new WaitForSeconds(2.5f);
 
         for (int i = 0; i < words[wordsIndex].nikud.Length; i++)
         {
@@ -141,6 +130,20 @@ public class CorrectClicks : MonoBehaviour
             yield return new WaitForSeconds(audioSource.clip.length);
 
         }
+
+        yield return new WaitForSeconds(1f);
+        gameManager.OnSucsessWord?.Invoke();
+        wordsIndex = (wordsIndex + 1) % words.Length;
+        picture.gameObject.GetComponent<Image>().sprite = words[wordsIndex].wordSprite;
+
+    }
+
+
+    private IEnumerator PlaySound(int intSound)
+    {
+        yield return new WaitForSeconds(nikudUI.AudioNikudClicked[indexCorectLetterClick].length + 0.1f);
+        audioSource.clip = sounds[intSound];
+        audioSource.Play();
 
     }
 
