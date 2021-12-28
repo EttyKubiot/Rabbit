@@ -26,21 +26,31 @@ public class NikudUI : MonoBehaviour
         gameManager.OnSucsessWord += ClaerImg;
         gameManager.OnSucsessWord += ClaerListToRead;
         gameManager.lasstNikudShva += NikudShva;
+        
     }
 
     public void UpdateDisplayUI(KeyNikudData keyNikudData)
     {
+       
+         if (correctClicks.ReadWord == false)
+        {
+            indexNikudClicked = keyNikudData.Index;
 
-        indexNikudClicked = keyNikudData.Index;
+            audioNikudClicked = keyNikudData.AudioClips;
 
-        audioNikudClicked = keyNikudData.AudioClips;
+            nikudSprite[correctClicks.RightClicks].sprite = keyNikudData.Icon;
+            Color tmp2 = nikudSprite[correctClicks.RightClicks].GetComponent<Image>().color;
+            tmp2.a = 255f;
+            nikudSprite[correctClicks.RightClicks].GetComponent<Image>().color = tmp2;
 
-        nikudSprite[correctClicks.RightClicks].sprite = keyNikudData.Icon;
 
-        audioSource.clip = keyNikudData.AudioClips[keyUI.IndexButtonClicked];
-        audioSource.Play();
+            audioSource.clip = keyNikudData.AudioClips[keyUI.IndexButtonClicked];
+            audioSource.Play();
 
-        gameManager.OnClickNikudKey?.Invoke(indexNikudClicked);
+            gameManager.OnClickNikudKey?.Invoke(indexNikudClicked);
+        } 
+        
+  
 
     }
 
@@ -50,6 +60,9 @@ public class NikudUI : MonoBehaviour
         for (int i = 0; i < nikudSprite.Length; i++)
         {
             nikudSprite[i].sprite = transparencySprite[i].sprite;
+            Color tmp = nikudSprite[i].GetComponent<Image>().color;
+            tmp.a = 0f;
+            nikudSprite[i].GetComponent<Image>().color = tmp;
 
         }
     }

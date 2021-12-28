@@ -20,15 +20,18 @@ public class KeyUI : MonoBehaviour
     }
     public void UpdateDisplayUI(KeyData keydData)
     {
+        if (correctClicks.ReadWord == false)
+        {
+            indexButtonClicked = keydData.Index;
 
-        indexButtonClicked = keydData.Index;
+            keyText[correctClicks.RightClicks].text = keydData.Key1;
 
-        keyText[correctClicks.RightClicks].text = keydData.Key1;
+            audioSource.clip = keydData.AudioClips;
+            audioSource.Play();
 
-        audioSource.clip = keydData.AudioClips;
-        audioSource.Play();
-       
-        gameManager.OnClickKey?.Invoke(indexButtonClicked);
+            gameManager.OnClickKey?.Invoke(indexButtonClicked);
+        }
+      
 
     }
 

@@ -20,8 +20,10 @@ public class CorrectClicks : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
 
     [SerializeField] private WordData[] words;
-    public int RightClicks => rightClicks;
 
+    [SerializeField] private bool readWord;
+    public int RightClicks => rightClicks;
+    public bool ReadWord => readWord;
     private void Start()
     {
         wordsIndex = 0;
@@ -120,7 +122,7 @@ public class CorrectClicks : MonoBehaviour
 
     private IEnumerator SucsessWord()
     {
-        //RaedWord
+        readWord = true;
         yield return new WaitForSeconds(2.5f);
 
         for (int i = 0; i < words[wordsIndex].nikud.Length; i++)
@@ -130,12 +132,12 @@ public class CorrectClicks : MonoBehaviour
             yield return new WaitForSeconds(audioSource.clip.length);
 
         }
-
+       
         yield return new WaitForSeconds(1f);
         gameManager.OnSucsessWord?.Invoke();
         wordsIndex = (wordsIndex + 1) % words.Length;
         picture.gameObject.GetComponent<Image>().sprite = words[wordsIndex].wordSprite;
-
+        readWord = false;
     }
 
 
