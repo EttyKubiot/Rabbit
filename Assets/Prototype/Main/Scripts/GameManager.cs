@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public UnityAction<int> OnClickKey;
     public UnityAction<int> OnClickNikudKey;
     public UnityAction OnSucsessWord;
-    public UnityAction lasstNikudShva;
+    public UnityAction lastNikudShva;
 
     public Texture2D cursorTexture;
     public CursorMode cursorMode = CursorMode.Auto;
@@ -27,10 +27,7 @@ public class GameManager : MonoBehaviour
         Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
     }
 
-    //void OnMouseEnter()
-    //{
-    //    Cursor.SetCursor(null, hotSpot, cursorMode);
-    //}
+    
 
     public int Score
     {

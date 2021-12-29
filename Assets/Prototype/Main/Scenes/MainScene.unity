@@ -5981,11 +5981,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85e574fde883fd240ae719fd1c01b6d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  picture: {fileID: 154003610}
   sounds:
   - {fileID: 8300000, guid: d3f93af676263eb4d8c89c22609cbd1c, type: 3}
   - {fileID: 8300000, guid: ef7c16e5c9a928f468430a21cb16ec51, type: 3}
   particles: {fileID: 1617986710}
+  picture: {fileID: 154003610}
   glowKeyAnimator: {fileID: 937562299}
   glowNikudAnimator: {fileID: 155328403}
   gameManager: {fileID: 285042772}
@@ -6001,7 +6001,6 @@ MonoBehaviour:
   - letters: 100000001300000016000000
     nikud: 040000000400000001000000
     wordSprite: {fileID: 21300000, guid: 79a03f4384167524fb6ab18c94e25062, type: 3}
-  readWord: 0
 --- !u!1 &576113256
 GameObject:
   m_ObjectHideFlags: 0
@@ -9882,8 +9881,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 468686eff0c9cea4484f046a32e5d4ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 937562299}
-  keyUI: {fileID: 1313311348}
 --- !u!1 &943353998
 GameObject:
   m_ObjectHideFlags: 0
@@ -11249,6 +11246,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f25e08ac31668be4fa6cd64edba8b447, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 285042772}
+  keyUI: {fileID: 1313311348}
+  correctClicks: {fileID: 571670543}
+  audioSource: {fileID: 1471195196}
+  keyNikudData1: {fileID: 11400000, guid: 465258ebf4815ce44a6e0c9042a23152, type: 2}
   nikudSprite:
   - {fileID: 368928060}
   - {fileID: 7904394}
@@ -11257,11 +11259,6 @@ MonoBehaviour:
   - {fileID: 1273493641}
   - {fileID: 1929816565}
   - {fileID: 272304916}
-  gameManager: {fileID: 285042772}
-  keyUI: {fileID: 1313311348}
-  correctClicks: {fileID: 571670543}
-  audioSource: {fileID: 1471195196}
-  keyNikudData1: {fileID: 11400000, guid: 465258ebf4815ce44a6e0c9042a23152, type: 2}
 --- !u!4 &1132250166
 Transform:
   m_ObjectHideFlags: 0
@@ -12916,13 +12913,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e529b9e5e18efc748b41674c8b542729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 285042772}
+  correctClicks: {fileID: 571670543}
+  audioSource: {fileID: 1471195196}
   keyText:
   - {fileID: 843351063}
   - {fileID: 1459455239}
   - {fileID: 1250801729}
-  gameManager: {fileID: 285042772}
-  correctClicks: {fileID: 571670543}
-  audioSource: {fileID: 1471195196}
 --- !u!4 &1313311349
 Transform:
   m_ObjectHideFlags: 0
@@ -14333,7 +14330,7 @@ PrefabInstance:
     - target: {fileID: 8177878373880489965, guid: 35555a25197e6c14fad2e4db9b026145,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35555a25197e6c14fad2e4db9b026145, type: 3}

@@ -5,36 +5,45 @@ using UnityEngine;
 
 public class CorrectClicks : MonoBehaviour
 {
+    [Space(10)]
+    [Header("Game progress")]
     private int rightClicks;
-    private int wordsIndex;
-
-    private bool corectNickudClick;
-    private bool corectLetterClick;
+    private int indexCorrectLetterClick;
+    private bool correctNickudClick;
+    private bool correctLetterClick;
     private bool nikudPrinted;
-    private int indexCorectLetterClick;
+    private bool readingWord;
 
-    [SerializeField] private Image picture;
+    [Space(10)]
+    [Header("Effects")]
     [SerializeField] private AudioClip[] sounds;
     [SerializeField] private ParticleSystem particles;
+    [SerializeField] private Image picture;
 
+    [Space(10)]
+    [Header("Help")]
     [SerializeField] private Animator glowKeyAnimator;
     [SerializeField] private Animator glowNikudAnimator;
 
+    [Space(10)]
+    [Header("Refernces")]
     [SerializeField] private GameManager gameManager;
     [SerializeField] private NikudUI nikudUI;
     [SerializeField] private AudioSource audioSource;
 
+    [Space(10)]
+    [Header("Word")]
     [SerializeField] private WordData[] words;
-
-    [SerializeField] private bool readingWord;
-   public int RightClicks => rightClicks;
+    private int wordsIndex;
+    
+    public int RightClicks => rightClicks;
     public bool ReadingWord => readingWord;
     private void Start()
     {
         wordsIndex = 0;
         rightClicks = 0;
-        corectLetterClick = false;
-        corectNickudClick = false;
+        correctLetterClick = false;
+        correctNickudClick = false;
         gameManager.OnClickKey += CheckIfClickLetterCorrect;
         gameManager.OnClickNikudKey += CheckIfClickNikudCorrect;
     }
@@ -42,31 +51,32 @@ public class CorrectClicks : MonoBehaviour
 
     private void CheckIfClickLetterCorrect(int indexButton)
     {
-        if(nikudPrinted == true)
+        if (nikudPrinted == true) // if nikud Printed before letter
         {
             audioSource.clip = nikudUI.AudioNikudClicked[indexButton];
             audioSource.Play();
         }
 
-        if (words[wordsIndex].nikud[words[wordsIndex].nikud.Length - 1] == 1 && rightClicks == words[wordsIndex].letters.Length - 1 && nikudPrinted == false)
+        if (words[wordsIndex].nikud[words[wordsIndex].nikud.Length - 1] == 1 
+            && rightClicks == words[wordsIndex].letters.Length - 1 && nikudPrinted == false) //if last nikud shva
         {
-            Debug.Log("lasst nikud shva");
-            corectNickudClick = true;
-            gameManager.lasstNikudShva?.Invoke();
+            Debug.Log("if last nikud shva");
+            correctNickudClick = true;
+            gameManager.lastNikudShva?.Invoke();
         }
 
         if (words[wordsIndex].letters[rightClicks] == indexButton)
         {
             Debug.Log("sucsess");
-            corectLetterClick = true;
-            indexCorectLetterClick = indexButton;
-            Currect();
+            correctLetterClick = true;
+            indexCorrectLetterClick = indexButton;
+            Correct();
         }
 
         else
         {
             Debug.Log("Error");
-            corectLetterClick = false;
+            correctLetterClick = false;
             gameManager.Health++;
         }
 
@@ -79,27 +89,27 @@ public class CorrectClicks : MonoBehaviour
         if (words[wordsIndex].nikud[rightClicks] == indexNikudButton)
         {
             Debug.Log("sucsessNikud");
-            corectNickudClick = true;
-            Currect();
+            correctNickudClick = true;
+            Correct();
         }
         else
         {
             Debug.Log("Error");
-            corectNickudClick = false;
+            correctNickudClick = false;
             gameManager.Health++;
         }
     }
 
-    private void Currect()
+    private void Correct()
     {
 
-        if (corectLetterClick == true && corectNickudClick == true) 
+        if (correctLetterClick == true && correctNickudClick == true) 
         {
-            corectLetterClick = false;
-            corectNickudClick = false;
+            correctLetterClick = false;
+            correctNickudClick = false;
             nikudPrinted = false;
 
-            nikudUI.ListToRead.Add(nikudUI.AudioNikudClicked[indexCorectLetterClick]);
+            nikudUI.ListToRead.Add(nikudUI.AudioNikudClicked[indexCorrectLetterClick]);
 
             if (rightClicks + 1 >= words[wordsIndex].letters.Length)
             {
@@ -150,7 +160,7 @@ public class CorrectClicks : MonoBehaviour
 
     private IEnumerator PlaySound(int intSound)
     {
-        yield return new WaitForSeconds(nikudUI.AudioNikudClicked[indexCorectLetterClick].length + 0.1f);
+        yield return new WaitForSeconds(nikudUI.AudioNikudClicked[indexCorrectLetterClick].length + 0.1f);
         audioSource.clip = sounds[intSound];
         audioSource.Play();
     }

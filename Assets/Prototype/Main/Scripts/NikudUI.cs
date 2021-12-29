@@ -5,13 +5,20 @@ using UnityEngine.UI;
 
 public class NikudUI : MonoBehaviour
 {
-    [SerializeField] private Image[] nikudSprite;
-    [SerializeField] private Image[] transparencySprite;
+    
+
+    [Space(10)]
+    [Header("Refernces")]
     [SerializeField] private GameManager gameManager;
     [SerializeField] private KeyUI keyUI;
     [SerializeField] private CorrectClicks correctClicks;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private KeyNikudData keyNikudData1;
+
+    [Space(10)]
+    [Header("Written view")]
+    [SerializeField] private Image[] nikudSprite;
+    [SerializeField] private Image[] transparencySprite;
 
     private int indexNikudClicked;
     private AudioClip[] audioNikudClicked;
@@ -25,7 +32,7 @@ public class NikudUI : MonoBehaviour
     {
         gameManager.OnSucsessWord += ClaerImg;
         gameManager.OnSucsessWord += ClaerListToRead;
-        gameManager.lasstNikudShva += NikudShva;
+        gameManager.lastNikudShva += NikudShva;
     }
 
     public void UpdateDisplayUI(KeyNikudData keyNikudData)
@@ -37,16 +44,22 @@ public class NikudUI : MonoBehaviour
             audioNikudClicked = keyNikudData.AudioClips;
 
             nikudSprite[correctClicks.RightClicks].sprite = keyNikudData.Icon;
-            Color tmp2 = nikudSprite[correctClicks.RightClicks].GetComponent<Image>().color;
-            tmp2.a = 255f;
-            nikudSprite[correctClicks.RightClicks].GetComponent<Image>().color = tmp2;
 
+            ChangeImageAlpha();
 
             audioSource.clip = keyNikudData.AudioClips[keyUI.IndexButtonClicked];
             audioSource.Play();
 
             gameManager.OnClickNikudKey?.Invoke(indexNikudClicked);
          } 
+    }
+
+
+    private void ChangeImageAlpha()
+    {
+        Color tmp2 = nikudSprite[correctClicks.RightClicks].GetComponent<Image>().color;
+        tmp2.a = 255f;
+        nikudSprite[correctClicks.RightClicks].GetComponent<Image>().color = tmp2;
     }
 
     private void ClaerImg()
@@ -71,5 +84,7 @@ public class NikudUI : MonoBehaviour
     {
         audioNikudClicked = keyNikudData1.AudioClips;
     }
+
+
 
 }

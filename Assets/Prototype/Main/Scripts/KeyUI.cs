@@ -5,12 +5,14 @@ using UnityEngine.UI;
 
 public class KeyUI : MonoBehaviour
 {
-    [SerializeField] private Text[] keyText;
+    [Space(10)]
+    [Header("Refernces")]
     [SerializeField] private GameManager gameManager;
     [SerializeField] private CorrectClicks correctClicks;
     [SerializeField] private AudioSource audioSource;
-    private int indexButtonClicked;
 
+    private int indexButtonClicked;
+    [SerializeField] private Text[] keyText;
     public int IndexButtonClicked => indexButtonClicked;
 
     private void Start()
