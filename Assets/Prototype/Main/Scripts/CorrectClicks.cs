@@ -7,6 +7,7 @@ public class CorrectClicks : MonoBehaviour
 {
     private int rightClicks;
     private int wordsIndex;
+
     private bool corectNickudClick;
     private bool corectLetterClick;
     private bool nikudPrinted;
@@ -16,16 +17,18 @@ public class CorrectClicks : MonoBehaviour
     [SerializeField] private AudioClip[] sounds;
     [SerializeField] private ParticleSystem particles;
 
+    [SerializeField] private Animator glowKeyAnimator;
+    [SerializeField] private Animator glowNikudAnimator;
+
     [SerializeField] private GameManager gameManager;
     [SerializeField] private NikudUI nikudUI;
     [SerializeField] private AudioSource audioSource;
 
     [SerializeField] private WordData[] words;
 
-    [SerializeField] private bool readWord;
-    [SerializeField] private Animator animator;
+    [SerializeField] private bool readingWord;
    public int RightClicks => rightClicks;
-    public bool ReadWord => readWord;
+    public bool ReadingWord => readingWord;
     private void Start()
     {
         wordsIndex = 0;
@@ -103,7 +106,6 @@ public class CorrectClicks : MonoBehaviour
                 Debug.Log("sucsess word");
                
                 gameManager.Score += 10;
-                animator.SetBool("Scale", true);
                 gameManager.Health = 0;
                 rightClicks = 0;
                 StartCoroutine(PlaySound(1));
@@ -126,7 +128,8 @@ public class CorrectClicks : MonoBehaviour
     private IEnumerator SucsessWord()
     {
         particles.Play();
-        readWord = true;
+        readingWord = true;
+
         yield return new WaitForSeconds(2.5f);
 
         for (int i = 0; i < words[wordsIndex].nikud.Length; i++)
@@ -135,14 +138,13 @@ public class CorrectClicks : MonoBehaviour
             audioSource.Play();
            
             yield return new WaitForSeconds(audioSource.clip.length);
-
         }
        
         yield return new WaitForSeconds(1f);
         gameManager.OnSucsessWord?.Invoke();
         wordsIndex = (wordsIndex + 1) % words.Length;
         picture.gameObject.GetComponent<Image>().sprite = words[wordsIndex].wordSprite;
-        readWord = false;
+        readingWord = false;
     }
 
 
@@ -151,8 +153,22 @@ public class CorrectClicks : MonoBehaviour
         yield return new WaitForSeconds(nikudUI.AudioNikudClicked[indexCorectLetterClick].length + 0.1f);
         audioSource.clip = sounds[intSound];
         audioSource.Play();
-        animator.SetBool("Scale", false);
+    }
 
+    public void ShowLetter()
+    {
+        gameManager.Score -= 2;
+        glowKeyAnimator.SetInteger("KeyGlow", words[wordsIndex].letters[rightClicks]);
+        glowNikudAnimator.SetInteger("GlowNikud", words[wordsIndex].nikud[rightClicks]);
+
+        StartCoroutine(ResetGlow());
+    }
+
+    private IEnumerator ResetGlow()
+    {
+        yield return new WaitForSeconds(1.2f);
+        glowNikudAnimator.SetInteger("GlowNikud", 10);
+        glowKeyAnimator.SetInteger("KeyGlow", 100);
     }
 
 }

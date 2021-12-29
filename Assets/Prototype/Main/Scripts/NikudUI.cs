@@ -26,14 +26,12 @@ public class NikudUI : MonoBehaviour
         gameManager.OnSucsessWord += ClaerImg;
         gameManager.OnSucsessWord += ClaerListToRead;
         gameManager.lasstNikudShva += NikudShva;
-        
     }
 
     public void UpdateDisplayUI(KeyNikudData keyNikudData)
     {
-       
-         if (correctClicks.ReadWord == false)
-        {
+         if (correctClicks.ReadingWord == false)
+         {
             indexNikudClicked = keyNikudData.Index;
 
             audioNikudClicked = keyNikudData.AudioClips;
@@ -48,10 +46,7 @@ public class NikudUI : MonoBehaviour
             audioSource.Play();
 
             gameManager.OnClickNikudKey?.Invoke(indexNikudClicked);
-        } 
-        
-  
-
+         } 
     }
 
     private void ClaerImg()

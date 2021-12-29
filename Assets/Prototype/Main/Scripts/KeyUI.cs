@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
 public class KeyUI : MonoBehaviour
 {
     [SerializeField] private Text[] keyText;
@@ -20,7 +19,7 @@ public class KeyUI : MonoBehaviour
     }
     public void UpdateDisplayUI(KeyData keydData)
     {
-        if (correctClicks.ReadWord == false)
+        if (correctClicks.ReadingWord == false)
         {
             indexButtonClicked = keydData.Index;
 
@@ -31,8 +30,6 @@ public class KeyUI : MonoBehaviour
 
             gameManager.OnClickKey?.Invoke(indexButtonClicked);
         }
-      
-
     }
 
     public void ClearText()
