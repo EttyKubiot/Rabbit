@@ -32,7 +32,7 @@ public class UIManager : MonoBehaviour
     private void SetHaelthSlider(int health)
     {
         slider.value = health;
- 
+        //slider.value = Mathf.Lerp(slider.value, health, 1 * Time.deltaTime);
     }
 
 
