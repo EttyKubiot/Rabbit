@@ -5,10 +5,12 @@ using UnityEngine;
 
 public class ToolControler : MonoBehaviour
 {
+    [SerializeField] private GameObject symbols;
     private enum ToolType
     {
         eraser,
-        brush
+        brush,
+        symbol
     }
 
     [SerializeField]
@@ -32,5 +34,16 @@ public class ToolControler : MonoBehaviour
             Paint.tool = "brush";
         }
 
+        if (toolType == ToolType.symbol)
+        {
+            symbols.gameObject.SetActive(true);
+        }
+
+
+    }
+
+    public void OnClickSymbols()
+    {
+        symbols.gameObject.SetActive(true);
     }
 }
