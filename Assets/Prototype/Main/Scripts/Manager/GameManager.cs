@@ -2,9 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+
+    [SerializeField] private Menu menu;
+    public string myName;
+    [SerializeField] private Text textName;
+
     private int score;
     private int health = 0;
 
@@ -25,6 +31,8 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
+        myName = PlayerPrefs.GetString("name");
+        textName.text = "!" + myName + " םולש ";
     }
 
     
