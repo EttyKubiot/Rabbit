@@ -31,7 +31,7 @@ public class ToolControler : MonoBehaviour
 
         if (toolType == ToolType.brush)
         {
-            Paint.tool = "brush";
+            StartCoroutine(WaitToDraw());
         }
 
         if (toolType == ToolType.symbol)
@@ -40,6 +40,12 @@ public class ToolControler : MonoBehaviour
         }
 
 
+    }
+
+    private IEnumerator WaitToDraw()
+    {
+        yield return new WaitForSeconds(1f);
+        Paint.tool = "brush";
     }
 
     public void OnClickSymbols()

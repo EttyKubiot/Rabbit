@@ -21,12 +21,6 @@ EditorBuildSettings:
     path: Assets/Prototype/BonusPlayDoor/BPDScenes/DoorPlay.unity
     guid: b928584258cf53f49abe7ef75d749d86
   - enabled: 1
-    path: Assets/Prototype/BonusPlayPiano/BPPSense/PianoPlay.unity
-    guid: 0934d1b1ec659034ebddf1c0e2f46ffd
-  - enabled: 1
-    path: Assets/Prototype/BonusPlayDrum/BPDrumSense/DrumPlay.unity
-    guid: 8a5a5291de973a240b23df5f805d48c5
-  - enabled: 1
     path: Assets/Prototype/BonusDraw/BDScense/Bonus paint.unity
     guid: 034b08bf8730e394889b334c7f07c021
   m_configObjects: {}

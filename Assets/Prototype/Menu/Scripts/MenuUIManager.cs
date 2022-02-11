@@ -2,13 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class MenuUIManager : MonoBehaviour
 {
     public Animator contentPanel;
     public Animator gearImage;
-
+    [SerializeField] private GameManager gameManager;
+    private int playerPrefs;
+    private void Awake()
+    {
+        Cursor.visible = true;
+        playerPrefs = PlayerPrefs.GetInt("Score", gameManager.Score);
+    }
    
     public void ToggleMenu()
     {
@@ -24,4 +31,19 @@ public class MenuUIManager : MonoBehaviour
 
        
     }
+
+    public void PlayGame()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    
+
+
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
 }

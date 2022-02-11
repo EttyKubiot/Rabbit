@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
+
 
 public class UIManager : MonoBehaviour
 {
@@ -65,7 +67,14 @@ public class UIManager : MonoBehaviour
 
     }
 
-   
+    public void OnClickGoToStore()
+    {
+        SceneManager.LoadScene(3);
+       
+
+    }
+
+
 
     public void SetVolume(float volume)
     {

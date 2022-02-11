@@ -115,7 +115,9 @@ public class CorrectClicks : MonoBehaviour
             {
                 Debug.Log("sucsess word");
                
-                gameManager.Score += 10;
+                gameManager.Score += 50;
+                PlayerPrefs.SetInt("Score", gameManager.Score);
+                PlayerPrefs.Save();
                 gameManager.Health = 0;
                 rightClicks = 0;
                 StartCoroutine(PlaySound(1));
@@ -167,7 +169,7 @@ public class CorrectClicks : MonoBehaviour
 
     public void ShowLetter()
     {
-        gameManager.Score -= 2;
+        gameManager.Score -= 5;
         glowKeyAnimator.SetInteger("KeyGlow", words[wordsIndex].letters[rightClicks]);
         glowNikudAnimator.SetInteger("GlowNikud", words[wordsIndex].nikud[rightClicks]);
 
